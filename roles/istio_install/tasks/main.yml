@@ -22,5 +22,3 @@
   ignore_errors: True
 - debug:
     var: install_istio_addons.stdout_lines
-
-

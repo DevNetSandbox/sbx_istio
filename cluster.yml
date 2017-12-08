@@ -94,21 +94,14 @@
       tags:
         - master
 
-
 - hosts: master
   become: true
   roles: 
       - role: kube_dashboard
         tags: master
-  tasks:
-    - debug:
-        var: kube_dashboard.stdout_lines
 
 - hosts: master
   become: true
   roles: 
       - role: istio_install 
         tags: master
-  tasks:
-    - debug:
-        var: istio_install.stdout_lines
