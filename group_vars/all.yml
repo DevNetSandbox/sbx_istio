@@ -7,4 +7,4 @@ contiv_ver: 1.1.7
 master_ip_address_configured: 10.10.20.1
 
 #istio version
-istio_ver: 0.3.0
+istio_ver: 0.4.0
