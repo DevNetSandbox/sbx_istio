@@ -4,7 +4,21 @@ ansible_ssh_pass: cisco123
 
 #contiv version
 contiv_ver: 1.1.7
-master_ip_address_configured: 10.10.20.1
+master_ip: 10.10.20.21
 
 #istio version
 istio_ver: 0.4.0
+
+# defaults file for kubeadm_install
+kubeadm_services: []
+
+#host IP
+worker1_ip: 10.10.20.22
+worker2_ip: 10.10.20.23
+worker3_ip: 10.10.20.24
+
+##host name
+master: netmaster
+worker1: k8s-worker-1
+worker2: k8s-worker-2
+worker3: k8s-worker-3
