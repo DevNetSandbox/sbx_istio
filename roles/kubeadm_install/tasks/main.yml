@@ -7,7 +7,7 @@
 
 #Implements Step 2 of http://kubernetes.io/docs/getting-started-guides/kubeadm/
 - name: Initialize master
-  command: kubeadm init --token {{ hostvars.localhost.admission_token }} --kubernetes-version v1.8.4 --skip-preflight-checks
+  command: kubeadm init --token {{ hostvars.localhost.admission_token }} --kubernetes-version v1.10.5 --ignore-preflight-errors=all
   args:
     creates: /etc/kubernetes/pki
   register: master_init

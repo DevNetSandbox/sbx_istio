@@ -1,0 +1,11 @@
+- name: Install metallb
+  command: "{{ item }}"
+  args:
+    chdir: "/root/metallb/"
+  with_items:
+    - kubectl apply -f metallb.yaml
+    - kubectl apply -f example-layer2-config.yaml
+  register: install_metallb
+  ignore_errors: True
+- debug:
+    var: install_metallb.results

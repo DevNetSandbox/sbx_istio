@@ -3,11 +3,11 @@ ansible_ssh_user: root
 ansible_ssh_pass: cisco123
 
 #contiv version
-contiv_ver: 1.1.7
+contiv_ver: 1.2.0
 master_ip: 10.10.20.21
 
 #istio version
-istio_ver: 0.4.0
+istio_ver: 1.0.0
 
 # defaults file for kubeadm_install
 kubeadm_services: []
@@ -19,6 +19,6 @@ worker3_ip: 10.10.20.24
 
 ##host name
 master: netmaster
-worker1: k8s-worker-1
-worker2: k8s-worker-2
-worker3: k8s-worker-3
+worker1: worker1
+worker2: worker2
+worker3: worker3

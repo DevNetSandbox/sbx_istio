@@ -47,7 +47,7 @@
   become: true
   tasks:
     - name: Join nodes to cluster
-      command: kubeadm join --token {{ hostvars.localhost.admission_token }} {{  master_ip }}:6443 --ignore-preflight-errors=all --discovery-token-unsafe-skip-ca-verification 
+      command: kubeadm join --token {{ hostvars.localhost.admission_token }} {{  master_ip }}:6443 --skip-preflight-checks 
       args:
         creates: /etc/kubernetes/kubelet.conf
       register: node_join
@@ -65,9 +65,9 @@
 
 - hosts: master
   become: true
+  roles: 
+      - { role: contiv_install, tags: master }
   tasks:
-    - name: install weave network plugin
-      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
     - debug:
         var: contiv_install.stdout_lines
 
@@ -95,12 +95,6 @@
   become: true
   roles: 
       - role: kube_dashboard
-        tags: master
-
-- hosts: master
-  become: true
-  roles: 
-      - role: metallb_install 
         tags: master
 
 - hosts: master

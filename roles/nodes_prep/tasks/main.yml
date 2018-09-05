@@ -41,6 +41,15 @@
     name: firewalld 
     state: stopped
 
+- name: enable bridge iptables
+  become: yes
+  sysctl:
+    name: net.bridge.bridge-nf-call-iptables
+    value: 1
+    sysctl_set: yes
+    state: present
+    reload: yes
+
 - name: disable swap
   command: swapoff -a
   

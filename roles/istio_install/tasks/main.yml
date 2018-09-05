@@ -3,22 +3,8 @@
   args:
     chdir: "/root/istio-{{ istio_ver }}"
   with_items:
-    - kubectl apply -f install/kubernetes/istio.yaml
+    - kubectl apply -f install/kubernetes/istio-demo.yaml
   register: install_istio
   ignore_errors: True
 - debug:
     var: install_istio.stdout_lines
-
-
-- name: Install Istio Addons
-  command: "{{ item }}"
-  args:
-    chdir: "/root/istio-{{ istio_ver }}"
-  with_items:
-    - kubectl apply -f install/kubernetes/addons/prometheus.yaml
-    - kubectl apply -f install/kubernetes/addons/grafana.yaml
-    - kubectl apply -f install/kubernetes/addons/servicegraph.yaml
-  register: install_istio_addons
-  ignore_errors: True
-- debug:
-    var: install_istio_addons.stdout_lines
